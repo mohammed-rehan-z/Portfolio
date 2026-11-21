@@ -3,28 +3,28 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#00f0ff] focus:ring-offset-2",
+  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
   {
     variants: {
       variant: {
         default:
-          "border border-[rgba(0,240,255,0.3)] bg-[rgba(0,240,255,0.08)] text-[#00f0ff]",
+          "border border-blue-500/30 bg-blue-500/10 text-blue-300",
         secondary:
-          "border border-[rgba(99,102,241,0.3)] bg-[rgba(99,102,241,0.08)] text-[#c0c1ff]",
+          "border border-indigo-500/30 bg-indigo-500/10 text-indigo-300",
         outline:
-          "border border-[rgba(255,255,255,0.1)] bg-[rgba(22,27,34,0.6)] text-[#8b949e]",
+          "border border-white/[0.1] bg-[#0d1424] text-slate-300",
         success:
-          "border border-[rgba(34,197,94,0.3)] bg-[rgba(34,197,94,0.1)] text-[#4ade80]",
+          "border border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
         amber:
-          "border border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.1)] text-[#fbbf24]",
+          "border border-amber-500/30 bg-amber-500/10 text-amber-300",
         telemetry:
-          "border border-[rgba(255,255,255,0.08)] bg-[rgba(15,19,28,0.85)] font-mono text-[11px] text-[#f0f6fc] tracking-wider uppercase",
+          "border border-white/[0.08] bg-[#0a0f1d] font-mono text-[11px] text-slate-200 tracking-wider uppercase",
         "subtle-cyan":
-          "border border-[rgba(0,240,255,0.25)] bg-[rgba(0,240,255,0.1)] text-[#00f0ff] font-mono uppercase",
+          "border border-blue-500/25 bg-blue-500/10 text-blue-300 font-mono uppercase",
         "subtle-indigo":
-          "border border-[rgba(99,102,241,0.25)] bg-[rgba(99,102,241,0.1)] text-[#c0c1ff] font-mono uppercase",
+          "border border-indigo-500/25 bg-indigo-500/10 text-indigo-300 font-mono uppercase",
         "subtle-purple":
-          "border border-[rgba(139,92,246,0.25)] bg-[rgba(139,92,246,0.1)] text-[#e1d2ff] font-mono uppercase",
+          "border border-purple-500/25 bg-purple-500/10 text-purple-300 font-mono uppercase",
       },
     },
     defaultVariants: {
@@ -45,7 +45,7 @@ function Badge({
   className,
   variant,
   dot,
-  dotColor = "bg-[#00f0ff]",
+  dotColor = "bg-blue-500",
   ping = false,
   children,
   ...props

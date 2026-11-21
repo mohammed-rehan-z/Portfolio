@@ -80,7 +80,7 @@ export function TiltCard({
             className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300"
             style={{
               opacity: glareOpacity,
-              background: `radial-gradient(circle at ${glarePosition.x}% ${glarePosition.y}%, rgba(0, 240, 255, 0.6), transparent 70%)`,
+              background: `radial-gradient(circle at ${glarePosition.x}% ${glarePosition.y}%, rgba(59, 130, 246, 0.4), transparent 70%)`,
             }}
           />
         )}

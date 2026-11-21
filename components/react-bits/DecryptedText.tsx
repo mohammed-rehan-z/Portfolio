@@ -17,7 +17,7 @@ export function DecryptedText({
   maxIterations = 12,
   characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+~|}{[]:;?><",
   className = "",
-  encryptedClassName = "text-[#00f0ff]",
+  encryptedClassName = "text-blue-400 font-mono",
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState(text)
   const [isScrambling, setIsScrambling] = useState(true)

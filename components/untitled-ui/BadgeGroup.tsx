@@ -12,7 +12,7 @@ interface BadgeGroupProps {
 }
 
 export function BadgeGroup({
-  dotColor = "bg-[#00f0ff]",
+  dotColor = "bg-blue-500",
   ping = true,
   badgeText,
   label,
@@ -21,7 +21,7 @@ export function BadgeGroup({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(22,27,34,0.7)] px-3 py-1 shadow-sm backdrop-blur-md transition-all hover:border-[rgba(0,240,255,0.3)]",
+        "inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#0d1424] px-3.5 py-1.5 shadow-sm backdrop-blur-md transition-all hover:border-blue-500/40",
         className
       )}
     >
@@ -39,14 +39,14 @@ export function BadgeGroup({
         />
       </span>
 
-      <span className="font-mono text-[11px] font-semibold tracking-wider text-[#00f0ff] uppercase">
+      <span className="font-mono text-[11px] font-semibold tracking-wider text-blue-300 uppercase">
         {badgeText}
       </span>
 
       {label && (
         <>
-          <span className="h-3 w-px bg-[rgba(255,255,255,0.15)]" />
-          <span className="text-xs text-[#8b949e]">{label}</span>
+          <span className="h-3 w-px bg-white/[0.15]" />
+          <span className="text-xs text-slate-300 font-mono">{label}</span>
         </>
       )}
     </div>

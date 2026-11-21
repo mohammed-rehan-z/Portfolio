@@ -21,7 +21,7 @@ export function MetricCard({
   suffix = "+",
   description,
   icon: Icon,
-  iconColor = "text-[#00f0ff]",
+  iconColor = "text-blue-400",
   trend,
   className = "",
 }: MetricCardProps) {
@@ -65,7 +65,7 @@ export function MetricCard({
     <div
       ref={cardRef}
       className={cn(
-        "group relative flex flex-col justify-between rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(22,27,34,0.65)] p-5 backdrop-blur-xl transition-all duration-300 hover:border-[rgba(0,240,255,0.3)] hover:bg-[rgba(22,27,34,0.85)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.6)]",
+        "group relative flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#0d1424] p-5 backdrop-blur-xl transition-all duration-300 hover:border-blue-500/40 hover:shadow-[0_8px_30px_rgba(37,99,235,0.08)]",
         className
       )}
     >

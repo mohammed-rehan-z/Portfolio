@@ -11,7 +11,7 @@ interface ParticlesProps {
 
 export function Particles({
   particleCount = 50,
-  particleColor = "rgba(0, 240, 255, 0.4)",
+  particleColor = "rgba(59, 130, 246, 0.4)",
   connectionColor = "rgba(99, 102, 241, 0.12)",
   className = "",
 }: ParticlesProps) {

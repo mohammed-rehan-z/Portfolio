@@ -3,48 +3,46 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mohammedrehan.dev"),
-  title: "Mohammed Rehan Z · AI Engineer & Innovator",
+  title: "Mohammed Rehan.Z — Monochrome Paper & Ink Portfolio",
   description:
-    "Building innovative AI projects, in-browser WebAssembly applications, edge computer vision tools, and modern web platforms. B.Tech candidate in AI & ML at HKBK College of Engineering, Bengaluru.",
+    "AI Systems & Full-Stack Web Engineer. Building impactful, innovative AI projects and real-world web solutions. 1st Prize Project Expo winner and creator of LocalResearcher.",
   keywords: [
     "Mohammed Rehan Z",
-    "AI Engineer & Innovator",
-    "AI Projects",
-    "Web Innovation",
-    "Machine Learning",
+    "Mohammed Rehan.Z",
+    "AI Systems Engineer",
+    "Full-Stack Web Engineer",
+    "LocalResearcher",
+    "In-Browser RAG",
     "WebAssembly",
-    "WASM Edge Inference",
-    "Local RAG",
-    "Transformers.js",
-    "Python",
-    "OpenCV",
+    "Machine Learning",
     "Next.js",
     "TypeScript",
+    "HKBK College of Engineering",
   ],
-  authors: [{ name: "Mohammed Rehan Z", url: "https://github.com/mohammed-rehan-z" }],
-  creator: "Mohammed Rehan Z",
+  authors: [{ name: "Mohammed Rehan.Z", url: "https://github.com/mohammed-rehan-z" }],
+  creator: "Mohammed Rehan.Z",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://mohammedrehan.dev",
-    title: "Mohammed Rehan Z · AI Engineer & Innovator",
+    title: "Mohammed Rehan.Z — Monochrome Paper & Ink Portfolio",
     description:
-      "Building innovative AI projects, in-browser WebAssembly tools, edge computer vision applications, and full-stack web solutions.",
-    siteName: "Mohammed Rehan Z Portfolio",
+      "AI Systems & Full-Stack Web Engineer. Building impactful, innovative AI projects and real-world web solutions.",
+    siteName: "Mohammed Rehan.Z Portfolio",
     images: [
       {
         url: "/images/portfolio-preview.png",
         width: 1200,
         height: 630,
-        alt: "Mohammed Rehan Z · AI Engineer & Innovator Portfolio Preview",
+        alt: "Mohammed Rehan.Z Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mohammed Rehan Z · AI Engineer & Innovator",
+    title: "Mohammed Rehan.Z — Monochrome Paper & Ink Portfolio",
     description:
-      "Innovative AI projects, in-browser WebAssembly tools, edge computer vision applications, and full-stack web solutions.",
+      "AI Systems & Full-Stack Web Engineer. Building impactful, innovative AI projects and real-world web solutions.",
     images: ["/images/portfolio-preview.png"],
     creator: "@mohammedrehanz",
   },
@@ -68,15 +66,15 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#070b14] font-body-md text-slate-100 antialiased selection:bg-cyan-500/20 selection:text-cyan-300 min-h-screen dark">
+      <body className="bg-neutral-50 dark:bg-[#0A0A0A] text-neutral-900 dark:text-neutral-100 antialiased min-h-screen relative overflow-x-hidden transition-colors duration-200">
         {children}
       </body>
     </html>

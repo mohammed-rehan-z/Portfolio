@@ -4,22 +4,22 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f0ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#090d16] disabled:pointer-events-none disabled:opacity-50 cursor-pointer active:scale-[0.98]",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080d1a] disabled:pointer-events-none disabled:opacity-50 cursor-pointer active:scale-[0.98]",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-[#00f0ff] to-[#6366f1] text-[#090d16] font-semibold hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] hover:-translate-y-0.5",
+          "bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:shadow-[0_4px_16px_rgba(37,99,235,0.4)] hover:-translate-y-0.5",
         cyan:
-          "bg-[#00f0ff] text-[#090d16] font-semibold hover:bg-white hover:shadow-[0_0_20px_rgba(0,240,255,0.4)]",
+          "bg-blue-600 text-white font-semibold hover:bg-blue-500 hover:shadow-[0_4px_16px_rgba(37,99,235,0.4)]",
         secondary:
-          "bg-[rgba(22,27,34,0.85)] text-[#00f0ff] border border-[rgba(0,240,255,0.3)] hover:border-[#00f0ff] hover:bg-[rgba(0,240,255,0.08)] hover:text-white backdrop-blur-md",
+          "bg-[#0d1424] text-blue-300 border border-white/[0.08] hover:border-blue-500/50 hover:bg-[#131d33] hover:text-white backdrop-blur-md",
         outline:
-          "border border-[rgba(255,255,255,0.12)] bg-transparent text-[#f0f6fc] hover:bg-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.25)]",
+          "border border-white/[0.12] bg-transparent text-slate-200 hover:bg-white/[0.06] hover:border-white/[0.25]",
         ghost:
-          "text-[#8b949e] hover:text-[#f0f6fc] hover:bg-[rgba(255,255,255,0.06)]",
+          "text-slate-400 hover:text-white hover:bg-white/[0.06]",
         subtle:
-          "bg-[rgba(255,255,255,0.05)] text-[#f0f6fc] border border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.1)] hover:border-[rgba(255,255,255,0.15)]",
+          "bg-white/[0.05] text-slate-200 border border-white/[0.08] hover:bg-white/[0.1] hover:border-white/[0.15]",
       },
       size: {
         default: "h-10 px-4 py-2",

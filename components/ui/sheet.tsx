@@ -36,7 +36,7 @@ const sheetVariants = cva(
           "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
         left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
         right:
-          "inset-y-0 right-0 h-full w-3/4 border-l border-[rgba(0,240,255,0.2)] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+          "inset-y-0 right-0 h-full w-3/4 border-l border-white/[0.08] bg-[#080d1a] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
       },
     },
     defaultVariants: {
@@ -61,7 +61,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-lg p-1.5 text-[#8b949e] opacity-70 transition-opacity hover:bg-[rgba(255,255,255,0.08)] hover:text-[#00f0ff] hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[#00f0ff]">
+      <SheetPrimitive.Close className="absolute right-4 top-4 rounded-lg p-1.5 text-slate-400 opacity-70 transition-opacity hover:bg-white/[0.08] hover:text-white hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
         <X className="h-5 w-5" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
