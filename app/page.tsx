@@ -590,7 +590,7 @@ export default function Home() {
                 <header className="flex flex-col gap-gutter-xs">
                   <div className="flex items-center justify-between gap-gutter-sm">
                     <span className="font-label text-label-md uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
-                      1st Prize
+                      1st Prize Winner
                     </span>
                     <span
                       className="material-symbols-outlined text-title-md text-neutral-900 dark:text-neutral-100"
@@ -600,11 +600,11 @@ export default function Home() {
                     </span>
                   </div>
                   <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100">
-                    Project Expo Winner
+                    NVIDIA Jetson Nano Workshop
                   </h3>
                 </header>
                 <p className="font-body text-body-sm text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
-                  Won 1st prize at TECHKUBIK Project Expo for engineering excellence, system architecture, and practical project innovation.
+                  Won 1st Prize for building an AI-powered computer vision solution using NVIDIA Jetson Nano hardware, demonstrating real-time edge processing and neural network optimization.
                 </p>
               </motion.article>
 
@@ -705,11 +705,11 @@ export default function Home() {
                     </span>
                   </div>
                   <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100 tabular-nums">
-                    6+ Verified Credentials
+                    6+ Verified Certifications
                   </h3>
                 </header>
                 <p className="font-body text-body-sm text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
-                  Anthropic Claude Generative AI, Microsoft Copilot Studio, Google Cloud ML &amp; IBM SkillBuild AI Engineering.
+                  Anthropic (MCP &amp; AI Fluency), Microsoft Machine Learning, Google ADK AI Agents, IBM Web Development &amp; NPTEL IIT Kanpur Cloud Computing.
                 </p>
               </motion.article>
             </div>
@@ -1057,7 +1057,7 @@ const answer = await engine.query(prompt);`}</code>
                 Experience
               </h2>
               <span className="font-mono text-xs sm:text-mono-sm text-neutral-500 dark:text-neutral-400 tabular-nums">
-                3 INTERNSHIPS &amp; APPLIED ROLES
+                4 APPLIED ROLES &amp; INTERNSHIPS
               </span>
 
               {/* Education Card with Framer Hover */}
@@ -1080,7 +1080,7 @@ const answer = await engine.query(prompt);`}</code>
                     7.3 CGPA
                   </span>
                   <span className="font-mono text-xs text-neutral-600 dark:text-neutral-400">
-                    2022 — 2026
+                    2023 — PRESENT
                   </span>
                 </div>
               </motion.div>
@@ -1089,148 +1089,277 @@ const answer = await engine.query(prompt);`}</code>
             {/* Right Column Progressive Timeline with Viewport Scroll Triggers & Guaranteed Alignment */}
             <div
               id="experience-timeline"
-              className="lg:col-span-8 relative pl-8 sm:pl-10 md:pl-12 flex flex-col gap-8 sm:gap-gutter-xl"
+              className="lg:col-span-8 relative flex flex-col gap-8 sm:gap-gutter-xl"
             >
               {/* Background Guide Line */}
               <div
-                className="absolute top-2 bottom-2 left-2.5 w-[2px] bg-neutral-200 dark:bg-neutral-800"
+                className="absolute top-3 bottom-5 left-[7px] w-[2px] bg-neutral-200 dark:bg-neutral-800"
                 aria-hidden="true"
               ></div>
 
               {/* Dynamic Scroll Progress Line */}
               <div
                 id="experience-progress-line"
-                className="absolute top-2 bottom-2 left-2.5 w-[2px] bg-neutral-900 dark:bg-white origin-top transition-transform duration-150 ease-out"
+                className="absolute top-3 bottom-5 left-[7px] w-[2px] bg-neutral-900 dark:bg-white origin-top transition-transform duration-150 ease-out"
                 style={{ transform: `scaleY(${timelineProgress})` }}
                 aria-hidden="true"
               ></div>
 
-              {/* Role 1 */}
+              {/* Role 1: Freelance Web Developer (Self-Employed) */}
               <motion.article
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-                className="experience-item relative flex flex-col gap-gutter-sm"
+                className="experience-item flex items-start gap-4 sm:gap-6 relative"
               >
-                <span
-                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
-                    timelineProgress >= 0.1
-                      ? "bg-neutral-900 dark:bg-white"
-                      : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
-                  }`}
-                  aria-hidden="true"
-                ></span>
-                <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
-                    AI Engineering Intern
-                  </h3>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
-                    2025 — PRESENT
-                  </span>
+                {/* Indicator Column */}
+                <div className="w-4 shrink-0 flex justify-center pt-1.5 z-10" aria-hidden="true">
+                  <span
+                    className={`experience-dot w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                      timelineProgress >= 0.1
+                        ? "bg-neutral-900 dark:bg-white"
+                        : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
+                    }`}
+                  />
                 </div>
-                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
-                  Generative AI &amp; RAG Systems
-                </p>
-                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
-                  Architected client-side document chunking and retrieval workflows, cutting inference latency and eliminating external vector DB hosting overhead.
-                </p>
-                <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    RAG
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
-                    ·
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    TypeScript
-                  </span>
+
+                {/* Content Column */}
+                <div className="flex-1 min-w-0 flex flex-col gap-gutter-sm">
+                  <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
+                    <div>
+                      <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
+                        Freelance Web Developer
+                      </h3>
+                      <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                        Self-Employed · Remote
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                      2025 — PRESENT
+                    </span>
+                  </div>
+                  <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                    Responsive Web Interfaces &amp; Client Solutions
+                  </p>
+                  <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                    Designed and developed responsive websites for local businesses, translating client requirements into functional, high-performance web experiences. Built and customized interfaces using HTML, CSS, JavaScript, React, and TypeScript with rigorous attention to usability, performance, and cross-browser reliability.
+                  </p>
+                  <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      React
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      TypeScript
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      JavaScript
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      HTML/CSS
+                    </span>
+                  </div>
                 </div>
               </motion.article>
 
-              {/* Role 2 */}
+              {/* Role 2: Web Developer / Technical Team (HKBK Group of Institutions) */}
               <motion.article
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-                className="experience-item relative flex flex-col gap-gutter-sm"
+                className="experience-item flex items-start gap-4 sm:gap-6 relative"
               >
-                <span
-                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
-                    timelineProgress >= 0.45
-                      ? "bg-neutral-900 dark:bg-white"
-                      : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
-                  }`}
-                  aria-hidden="true"
-                ></span>
-                <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
-                    Full-Stack Web Intern
-                  </h3>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
-                    2024 — 2025
-                  </span>
+                {/* Indicator Column */}
+                <div className="w-4 shrink-0 flex justify-center pt-1.5 z-10" aria-hidden="true">
+                  <span
+                    className={`experience-dot w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                      timelineProgress >= 0.35
+                        ? "bg-neutral-900 dark:bg-white"
+                        : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
+                    }`}
+                  />
                 </div>
-                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
-                  Web Platforms &amp; APIs
-                </p>
-                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
-                  Shipped responsive React dashboards and RESTful Node.js microservices with automated schema validation and role-based access control.
-                </p>
-                <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    React
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
-                    ·
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    Node.js
-                  </span>
+
+                {/* Content Column */}
+                <div className="flex-1 min-w-0 flex flex-col gap-gutter-sm">
+                  <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
+                    <div>
+                      <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
+                        Web Developer / Technical Team
+                      </h3>
+                      <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                        HKBK Group of Institutions · Bengaluru, India
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                      2024 — 2025
+                    </span>
+                  </div>
+                  <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                    National Hackathon Event Platform &amp; Operations
+                  </p>
+                  <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                    Developed the official event website and participant registration workflow for a 36-hour national-level hackathon using modern web technologies. Coordinated 30+ volunteers across technical operations, participant onboarding, and cross-functional communication to ensure seamless execution.
+                  </p>
+                  <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Web Development
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Registration Workflows
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Technical Operations
+                    </span>
+                  </div>
                 </div>
               </motion.article>
 
-              {/* Role 3 */}
+              {/* Role 3: AI / ML Intern (ShadowFox) */}
               <motion.article
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-                className="experience-item relative flex flex-col gap-gutter-sm"
+                className="experience-item flex items-start gap-4 sm:gap-6 relative"
               >
-                <span
-                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
-                    timelineProgress >= 0.8
-                      ? "bg-neutral-900 dark:bg-white"
-                      : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
-                  }`}
-                  aria-hidden="true"
-                ></span>
-                <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
-                    ML Research Intern
-                  </h3>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
-                    2024
-                  </span>
+                {/* Indicator Column */}
+                <div className="w-4 shrink-0 flex justify-center pt-1.5 z-10" aria-hidden="true">
+                  <span
+                    className={`experience-dot w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                      timelineProgress >= 0.65
+                        ? "bg-neutral-900 dark:bg-white"
+                        : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
+                    }`}
+                  />
                 </div>
-                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
-                  Telemetry &amp; Forecasting
-                </p>
-                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
-                  Trained and evaluated telemetry prediction models on multivariate sensor streams, improving early anomaly recall by 18%.
-                </p>
-                <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    Python
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
-                    ·
-                  </span>
-                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
-                    Google Cloud ML
-                  </span>
+
+                {/* Content Column */}
+                <div className="flex-1 min-w-0 flex flex-col gap-gutter-sm">
+                  <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
+                    <div>
+                      <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
+                        AI / ML Intern
+                      </h3>
+                      <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                        ShadowFox · Virtual Internship
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                      OCT 2025
+                    </span>
+                  </div>
+                  <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                    Classification &amp; Predictive Machine Learning
+                  </p>
+                  <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                    Developed and evaluated Logistic Regression, Decision Tree, and Random Forest models for classification and predictive analysis using Python and Scikit-learn. Performed rigorous data cleaning, exploratory data analysis (EDA), feature engineering, hyperparameter tuning, and model validation using Pandas and NumPy.
+                  </p>
+                  <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Python
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Scikit-Learn
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Random Forest
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Pandas &amp; NumPy
+                    </span>
+                  </div>
+                </div>
+              </motion.article>
+
+              {/* Role 4: Front-End Development Intern (Edunet Foundation - IBM SkillBuild) */}
+              <motion.article
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+                className="experience-item flex items-start gap-4 sm:gap-6 relative"
+              >
+                {/* Indicator Column */}
+                <div className="w-4 shrink-0 flex justify-center pt-1.5 z-10" aria-hidden="true">
+                  <span
+                    className={`experience-dot w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                      timelineProgress >= 0.9
+                        ? "bg-neutral-900 dark:bg-white"
+                        : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
+                    }`}
+                  />
+                </div>
+
+                {/* Content Column */}
+                <div className="flex-1 min-w-0 flex flex-col gap-gutter-sm">
+                  <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
+                    <div>
+                      <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
+                        Front-End Development Intern
+                      </h3>
+                      <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">
+                        Edunet Foundation (IBM SkillBuild) · Virtual Internship
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                      SEP 2025 — OCT 2025
+                    </span>
+                  </div>
+                  <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                    Responsive Web Engineering &amp; Modern UI
+                  </p>
+                  <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                    Built modern responsive web interfaces using HTML, CSS, JavaScript, Flexbox, and CSS Grid while following professional Git and GitHub collaborative development workflows.
+                  </p>
+                  <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      HTML5 &amp; CSS3
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      JavaScript
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Flexbox &amp; Grid
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
+                      ·
+                    </span>
+                    <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
+                      Git &amp; GitHub
+                    </span>
+                  </div>
                 </div>
               </motion.article>
             </div>
