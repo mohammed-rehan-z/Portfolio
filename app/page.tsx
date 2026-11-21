@@ -330,13 +330,13 @@ export default function Home() {
               LinkedIn
             </a>
 
-            {/* Download Resume Button */}
+            {/* Download Resume Button (Desktop / Tablet) */}
             <motion.button
               type="button"
               onClick={handleDownloadResume}
               whileHover={{ scale: 1.02, y: -1 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center gap-gutter-sm px-5 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label font-semibold transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white cursor-pointer shadow-sm"
+              className="hidden sm:inline-flex items-center justify-center gap-gutter-sm px-5 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label font-semibold transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white cursor-pointer shadow-sm min-h-[44px]"
             >
               <span className="material-symbols-outlined text-title-md" aria-hidden="true">
                 download
@@ -349,9 +349,9 @@ export default function Home() {
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label="Toggle navigation menu"
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-full text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white"
+              className="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white transition-colors"
             >
-              <span className="material-symbols-outlined text-title-md" aria-hidden="true">
+              <span className="material-symbols-outlined text-2xl" aria-hidden="true">
                 {mobileMenuOpen ? "close" : "menu"}
               </span>
             </button>
@@ -367,7 +367,7 @@ export default function Home() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.22, ease: EASE_PREMIUM }}
               aria-label="Mobile Navigation"
-              className="overflow-hidden lg:hidden py-4 border-t border-neutral-200 dark:border-neutral-800 flex flex-col gap-3"
+              className="overflow-hidden lg:hidden py-4 border-t border-neutral-200 dark:border-neutral-800 flex flex-col gap-2"
             >
               {[
                 { id: "home", label: "Home" },
@@ -380,7 +380,7 @@ export default function Home() {
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 rounded-md text-body-md font-label transition-colors ${
+                  className={`px-4 py-3 rounded-lg text-body-md font-label transition-colors min-h-[44px] flex items-center ${
                     activeNav === link.id
                       ? "text-neutral-950 dark:text-white font-semibold bg-neutral-200/80 dark:bg-neutral-800/80"
                       : "text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50"
@@ -389,35 +389,54 @@ export default function Home() {
                   {link.label}
                 </a>
               ))}
-              <div className="pt-2 flex items-center justify-between px-3 border-t border-neutral-200 dark:border-neutral-800">
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://github.com/mohammed-rehan-z"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-label-lg font-label text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white"
-                  >
-                    GitHub
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/mohammed-rehan-z"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-label-lg font-label text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
+
+              {/* Mobile Download Resume & Quick Actions */}
+              <div className="pt-3 px-2 border-t border-neutral-200 dark:border-neutral-800 flex flex-col gap-3">
                 <button
                   type="button"
-                  onClick={toggleTheme}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-neutral-700 dark:text-neutral-300 bg-neutral-200/60 dark:bg-neutral-800/60 text-label-md font-label font-medium"
+                  onClick={() => {
+                    handleDownloadResume();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label font-semibold transition-colors shadow-sm cursor-pointer min-h-[48px]"
                 >
-                  <span className="material-symbols-outlined text-body-md" aria-hidden="true">
-                    {isDarkMode ? "light_mode" : "dark_mode"}
+                  <span className="material-symbols-outlined text-title-md" aria-hidden="true">
+                    download
                   </span>
-                  <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
+                  <span>Download Resume (PDF)</span>
                 </button>
+
+                <div className="flex items-center justify-between px-2 pt-1">
+                  <div className="flex items-center gap-4">
+                    <a
+                      href="https://github.com/mohammed-rehan-z"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-label-lg font-label text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white py-2"
+                    >
+                      GitHub
+                    </a>
+                    <span className="text-neutral-300 dark:text-neutral-700">·</span>
+                    <a
+                      href="https://linkedin.com/in/mohammed-rehan-z"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-label-lg font-label text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white py-2"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-neutral-700 dark:text-neutral-300 bg-neutral-200/60 dark:bg-neutral-800/60 text-label-md font-label font-medium min-h-[36px]"
+                  >
+                    <span className="material-symbols-outlined text-body-md" aria-hidden="true">
+                      {isDarkMode ? "light_mode" : "dark_mode"}
+                    </span>
+                    <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
+                  </button>
+                </div>
               </div>
             </motion.nav>
           )}
@@ -428,7 +447,7 @@ export default function Home() {
         {/* Centered Editorial Masthead Hero with Framer Motion Stagger */}
         <section
           id="home"
-          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pt-section pb-section"
+          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pt-10 sm:pt-14 md:pt-section pb-12 sm:pb-16 md:pb-section"
         >
           <motion.div
             variants={heroContainerVariants}
@@ -436,18 +455,18 @@ export default function Home() {
             animate="visible"
             className="flex flex-col items-center text-center gap-gutter-lg max-w-3xl mx-auto"
           >
-            {/* Genuine Portrait Frame - Authentic Real Photograph with Framer Spring Physics */}
+            {/* Genuine Portrait Frame - Authentic Real Photograph with Responsive Sizing */}
             <motion.div
               variants={heroItemVariants}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-72 h-72 rounded-full overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-2xl ring-2 ring-black/10 dark:ring-white/10 relative group bg-neutral-200 dark:bg-neutral-800 cursor-pointer"
+              className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-neutral-300 dark:border-neutral-700 shadow-2xl ring-2 ring-black/10 dark:ring-white/10 relative group bg-neutral-200 dark:bg-neutral-800 cursor-pointer shrink-0"
             >
               <Image
                 src="/images/mohammed_real_portrait.jpg"
                 alt="Portrait of Mohammed Rehan.Z"
                 fill
-                sizes="(max-width: 768px) 288px, 288px"
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 240px, 288px"
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                 priority
               />
@@ -492,13 +511,13 @@ export default function Home() {
             {/* Hero Action CTAs */}
             <motion.div
               variants={heroItemVariants}
-              className="flex flex-wrap items-center justify-center gap-gutter-md pt-gutter-xs"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0 pt-gutter-xs"
             >
               <motion.a
                 href="#projects"
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-gutter-sm px-6 py-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label font-semibold transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white shadow-md cursor-pointer"
+                className="inline-flex items-center justify-center gap-gutter-sm px-6 py-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label font-semibold transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white shadow-md cursor-pointer min-h-[48px]"
               >
                 <span className="font-label text-label-lg">Explore Projects</span>
                 <span className="material-symbols-outlined text-title-md" aria-hidden="true">
@@ -509,7 +528,7 @@ export default function Home() {
                 href="#contact"
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center justify-center gap-gutter-sm px-6 py-3 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label font-medium transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white cursor-pointer"
+                className="inline-flex items-center justify-center gap-gutter-sm px-6 py-3 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label font-medium transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900 dark:focus-visible:ring-white cursor-pointer min-h-[48px]"
               >
                 <span className="font-label text-label-lg">Get in Touch</span>
               </motion.a>
@@ -518,18 +537,18 @@ export default function Home() {
             {/* Status Footer Meta */}
             <motion.div
               variants={heroItemVariants}
-              className="inline-flex items-center gap-gutter-md pt-gutter-sm"
+              className="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-gutter-md pt-gutter-sm text-xs sm:text-mono-sm"
             >
-              <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400 tracking-wider">
+              <span className="font-mono text-neutral-600 dark:text-neutral-400 tracking-wider">
                 BENGALURU, IN
               </span>
               <span
-                className="font-mono text-mono-sm text-neutral-400 dark:text-neutral-600"
+                className="font-mono text-neutral-400 dark:text-neutral-600"
                 aria-hidden="true"
               >
                 ·
               </span>
-              <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 font-semibold tracking-wider flex items-center gap-1.5">
+              <span className="font-mono text-neutral-900 dark:text-neutral-100 font-semibold tracking-wider flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-neutral-900 dark:bg-white animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.3)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                 AVAILABLE FOR ROLES
               </span>
@@ -540,7 +559,7 @@ export default function Home() {
         {/* About / Highlights 2x2 Bento with Viewport Scroll Triggers */}
         <section
           id="about"
-          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-section"
+          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-12 sm:pb-16 md:pb-section"
         >
           <div className="flex flex-col gap-gutter-lg">
             <motion.div
@@ -558,7 +577,7 @@ export default function Home() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-gutter-lg items-stretch">
               {/* Highlight Card 1 */}
               <motion.article
                 initial={{ opacity: 0, y: 24 }}
@@ -566,7 +585,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: 0.05 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="h-full flex flex-col justify-between gap-gutter-md p-gutter-xl rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
+                className="h-full flex flex-col justify-between gap-gutter-md p-5 sm:p-6 md:p-gutter-xl rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
               >
                 <header className="flex flex-col gap-gutter-xs">
                   <div className="flex items-center justify-between gap-gutter-sm">
@@ -596,7 +615,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: 0.12 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="h-full flex flex-col justify-between gap-gutter-md p-gutter-xl rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
+                className="h-full flex flex-col justify-between gap-gutter-md p-5 sm:p-6 md:p-gutter-xl rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
               >
                 <header className="flex flex-col gap-gutter-xs">
                   <div className="flex items-center justify-between gap-gutter-sm">
@@ -623,7 +642,7 @@ export default function Home() {
                     onClick={() => handleCopy("npm i localresearcher", "npm command")}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="font-mono text-mono-sm px-3 py-1.5 rounded-sm bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 self-start hover:bg-neutral-200 dark:hover:bg-neutral-700 flex items-center gap-2 cursor-pointer transition-colors border border-neutral-300 dark:border-neutral-700"
+                    className="font-mono text-mono-sm px-3.5 py-2 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 self-start hover:bg-neutral-200 dark:hover:bg-neutral-700 flex items-center gap-2 cursor-pointer transition-colors border border-neutral-300 dark:border-neutral-700 min-h-[42px]"
                     title="Click to copy"
                   >
                     <span>npm i localresearcher</span>
@@ -641,7 +660,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: 0.18 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="h-full flex flex-col justify-between gap-gutter-md p-gutter-xl rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
+                className="h-full flex flex-col justify-between gap-gutter-md p-5 sm:p-6 md:p-gutter-xl rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
               >
                 <header className="flex flex-col gap-gutter-xs">
                   <div className="flex items-center justify-between gap-gutter-sm">
@@ -671,7 +690,7 @@ export default function Home() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: 0.24 }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="h-full flex flex-col justify-between gap-gutter-md p-gutter-xl rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
+                className="h-full flex flex-col justify-between gap-gutter-md p-5 sm:p-6 md:p-gutter-xl rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors"
               >
                 <header className="flex flex-col gap-gutter-xs">
                   <div className="flex items-center justify-between gap-gutter-sm">
@@ -700,7 +719,7 @@ export default function Home() {
         {/* Selected Projects Section with AnimatePresence Filter Transitions */}
         <section
           id="projects"
-          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-section"
+          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-12 sm:pb-16 md:pb-section"
         >
           <div className="flex flex-col gap-gutter-xl">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-gutter-md">
@@ -713,9 +732,9 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Category Filter Chips with Smooth Spring Transitions */}
+              {/* Category Filter Chips with Smooth Horizontal Swipe on Mobile */}
               <div
-                className="flex flex-wrap items-center gap-gutter-sm"
+                className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 -mx-gutter-md px-gutter-md sm:mx-0 sm:px-0 sm:flex-wrap touch-pan-x"
                 role="group"
                 aria-label="Filter projects by category"
               >
@@ -735,7 +754,7 @@ export default function Home() {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       layout
-                      className={`inline-flex items-center px-4 py-1.5 rounded-full font-label text-label-md transition-colors duration-state-change cursor-pointer ${
+                      className={`inline-flex items-center shrink-0 px-4 py-2 rounded-full font-label text-xs sm:text-label-md transition-colors duration-state-change cursor-pointer min-h-[40px] ${
                         isActive
                           ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold shadow-sm"
                           : "bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-800 border border-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-neutral-200 dark:border-neutral-700"
@@ -759,51 +778,51 @@ export default function Home() {
                   exit={{ opacity: 0, scale: 0.98, y: -10 }}
                   transition={{ duration: 0.35, ease: EASE_PREMIUM }}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className="rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-gutter-xl flex flex-col lg:flex-row items-stretch justify-between gap-gutter-xl shadow-md"
+                  className="rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-5 sm:p-7 md:p-8 lg:p-gutter-xl flex flex-col lg:flex-row items-stretch justify-between gap-6 lg:gap-gutter-xl shadow-md overflow-hidden"
                 >
                   <div className="flex-1 flex flex-col justify-between gap-gutter-md">
                     <div className="flex flex-col gap-gutter-sm">
-                      <div className="flex flex-wrap items-center gap-gutter-sm">
-                        <span className="font-mono text-mono-sm px-3 py-1 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-mono text-xs sm:text-mono-sm px-3 py-1 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold">
                           FEATURED · PUBLIC OPEN-SOURCE · NPM
                         </span>
-                        <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                        <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                           v1.4.0 · MIT
                         </span>
                       </div>
 
-                      <h3 className="font-headline text-display-md-mobile lg:text-display-md text-neutral-900 dark:text-neutral-100">
+                      <h3 className="font-headline text-2xl sm:text-display-md-mobile lg:text-display-md text-neutral-900 dark:text-neutral-100">
                         LocalResearcher
                       </h3>
 
-                      <p className="font-label text-title-md text-neutral-800 dark:text-neutral-200 font-medium">
+                      <p className="font-label text-base sm:text-title-md text-neutral-800 dark:text-neutral-200 font-medium">
                         Deterministic In-Browser Academic RAG Engine
                       </p>
 
-                      <p className="font-body text-body-lg text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
+                      <p className="font-body text-sm sm:text-body-lg text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
                         A zero-hallucination academic intelligence platform engineered for deterministic synthesis of peer-reviewed research papers. Completely air-gapped and runs directly in-browser via WebAssembly &amp; ONNX Runtime Web, performing local document chunking and vector indexing inside IndexedDB without recurring LLM API compute charges.
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-gutter-md pt-2">
-                      <div className="flex flex-wrap items-center gap-gutter-sm">
+                    <div className="flex flex-col gap-4 pt-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         {coreProjects[0].tags.map((tag) => (
                           <span
                             key={tag}
-                            className="font-mono text-mono-sm px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700"
+                            className="font-mono text-xs sm:text-mono-sm px-2.5 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-700"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-gutter-md pt-1">
+                      <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-1">
                         <motion.button
                           type="button"
                           onClick={() => handleCopy("npm install localresearcher", "npm command")}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          className="inline-flex items-center gap-gutter-sm px-5 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-label-lg font-semibold transition-colors duration-state-change cursor-pointer shadow-sm"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-sm sm:text-label-lg font-semibold transition-colors duration-state-change cursor-pointer shadow-sm min-h-[44px]"
                         >
                           <span className="material-symbols-outlined text-title-md" aria-hidden="true">
                             content_copy
@@ -818,7 +837,7 @@ export default function Home() {
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="inline-flex items-center gap-gutter-xs px-4 py-2.5 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-label-lg transition-colors cursor-pointer"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-sm sm:text-label-lg transition-colors cursor-pointer min-h-[44px]"
                           >
                             <span>Live Demo</span>
                             <span className="material-symbols-outlined text-title-md" aria-hidden="true">
@@ -831,7 +850,7 @@ export default function Home() {
                           href={coreProjects[0].repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-gutter-xs font-label text-label-lg text-neutral-900 dark:text-neutral-100 hover:underline font-medium"
+                          className="inline-flex items-center justify-center sm:justify-start gap-1 font-label text-sm sm:text-label-lg text-neutral-900 dark:text-neutral-100 hover:underline font-medium min-h-[44px]"
                         >
                           <span>GitHub Repository</span>
                           <span className="material-symbols-outlined text-title-md" aria-hidden="true">
@@ -843,17 +862,17 @@ export default function Home() {
                   </div>
 
                   {/* Right Column Code Preview & Architecture Details */}
-                  <div className="lg:w-[460px] flex flex-col justify-between gap-gutter-md">
-                    <div className="rounded-lg bg-neutral-950 text-neutral-200 border border-neutral-800 p-gutter-md flex flex-col gap-gutter-sm shadow-inner">
-                      <div className="flex items-center justify-between border-b border-neutral-800 pb-gutter-xs">
-                        <span className="font-mono text-mono-sm text-neutral-400">
+                  <div className="lg:w-[460px] flex flex-col justify-between gap-4 mt-2 lg:mt-0">
+                    <div className="rounded-xl bg-neutral-950 text-neutral-200 border border-neutral-800 p-4 sm:p-gutter-md flex flex-col gap-gutter-sm shadow-inner overflow-hidden">
+                      <div className="flex items-center justify-between border-b border-neutral-800 pb-2">
+                        <span className="font-mono text-xs sm:text-mono-sm text-neutral-400">
                           rag-pipeline.ts
                         </span>
-                        <span className="font-mono text-mono-sm text-neutral-100 font-semibold">
+                        <span className="font-mono text-xs sm:text-mono-sm text-neutral-100 font-semibold">
                           0ms Server Latency
                         </span>
                       </div>
-                      <pre className="font-mono text-mono-sm text-neutral-300 overflow-x-auto leading-relaxed py-1">
+                      <pre className="font-mono text-xs sm:text-mono-sm text-neutral-300 overflow-x-auto leading-relaxed py-1 touch-pan-x max-w-full">
                         <code>{`import { LocalResearcher } from 'localresearcher';
 
 // 100% In-Browser RAG Engine
@@ -870,11 +889,11 @@ const answer = await engine.query(prompt);`}</code>
                     </div>
 
                     {/* Architecture Specs */}
-                    <div className="p-gutter-md rounded-lg bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700">
-                      <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 uppercase tracking-wider font-semibold block mb-2">
+                    <div className="p-4 sm:p-gutter-md rounded-xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700">
+                      <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 uppercase tracking-wider font-semibold block mb-2">
                         Key Architecture Highlights
                       </span>
-                      <ul className="flex flex-col gap-1.5 font-body text-body-sm text-neutral-700 dark:text-neutral-300">
+                      <ul className="flex flex-col gap-1.5 font-body text-xs sm:text-body-sm text-neutral-700 dark:text-neutral-300">
                         {coreProjects[0].architectureDetails.map((detail, idx) => (
                           <li key={idx} className="flex items-start gap-2">
                             <span className="text-neutral-900 dark:text-neutral-100 shrink-0 mt-0.5">▪</span>
@@ -889,7 +908,7 @@ const answer = await engine.query(prompt);`}</code>
             </AnimatePresence>
 
             {/* Remaining Core Projects with AnimatePresence */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter-lg items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-gutter-lg items-stretch">
               <AnimatePresence mode="popLayout">
                 {filteredProjects
                   .filter((p) => p.id !== "localresearcher" || (selectedFilter !== "all" && selectedFilter !== "ai"))
@@ -904,20 +923,20 @@ const answer = await engine.query(prompt);`}</code>
                         exit={{ opacity: 0, scale: 0.98, y: -10 }}
                         transition={{ duration: 0.35, ease: EASE_PREMIUM }}
                         whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                        className="flex flex-col justify-between gap-gutter-md p-gutter-xl rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 transition-colors duration-state-change hover:border-neutral-900 dark:hover:border-neutral-100 shadow-sm"
+                        className="flex flex-col justify-between gap-gutter-md p-5 sm:p-6 md:p-gutter-xl rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 transition-colors duration-state-change hover:border-neutral-900 dark:hover:border-neutral-100 shadow-sm"
                       >
                         <header className="flex flex-col gap-gutter-xs">
                           <div className="flex items-center justify-between gap-gutter-sm">
-                            <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 font-semibold">
+                            <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 font-semibold">
                               {project.badge}
                             </span>
-                            <span className="font-mono text-mono-sm text-neutral-500 dark:text-neutral-400">
+                            <span className="font-mono text-xs sm:text-mono-sm text-neutral-500 dark:text-neutral-400">
                               #{project.number}
                             </span>
                           </div>
 
                           <div className="flex items-baseline justify-between gap-2 mt-1">
-                            <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100">
+                            <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
                               {project.title}
                             </h3>
                             <a
@@ -933,18 +952,18 @@ const answer = await engine.query(prompt);`}</code>
                             </a>
                           </div>
 
-                          <p className="font-label text-label-md text-neutral-800 dark:text-neutral-200 font-medium">
+                          <p className="font-label text-sm sm:text-label-md text-neutral-800 dark:text-neutral-200 font-medium">
                             {project.subtitle}
                           </p>
                         </header>
 
-                        <p className="font-body text-body-sm text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
+                        <p className="font-body text-xs sm:text-body-sm text-neutral-700 dark:text-neutral-300 text-pretty leading-relaxed">
                           {project.description}
                         </p>
 
                         {/* Metric Banner */}
-                        <div className="px-3 py-1.5 rounded-sm bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between">
-                          <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 font-medium">
+                        <div className="px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between">
+                          <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 font-medium">
                             {project.metrics}
                           </span>
                         </div>
@@ -959,10 +978,10 @@ const answer = await engine.query(prompt);`}</code>
                               transition={{ duration: 0.28, ease: "easeInOut" }}
                               className="overflow-hidden pt-2 border-t border-neutral-200 dark:border-neutral-800 flex flex-col gap-1.5"
                             >
-                              <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400 uppercase font-semibold">
+                              <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400 uppercase font-semibold">
                                 Implementation Specs:
                               </span>
-                              <ul className="flex flex-col gap-1 font-body text-body-sm text-neutral-700 dark:text-neutral-300">
+                              <ul className="flex flex-col gap-1 font-body text-xs sm:text-body-sm text-neutral-700 dark:text-neutral-300">
                                 {project.architectureDetails.map((detail, idx) => (
                                   <li key={idx} className="flex items-start gap-2">
                                     <span className="text-neutral-900 dark:text-neutral-100 shrink-0 mt-0.5">▪</span>
@@ -978,12 +997,12 @@ const answer = await engine.query(prompt);`}</code>
                           <div className="flex flex-wrap items-center gap-gutter-xs">
                             {project.tags.map((tag, idx) => (
                               <React.Fragment key={tag}>
-                                <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                                <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                                   {tag}
                                 </span>
                                 {idx < project.tags.length - 1 && (
                                   <span
-                                    className="font-mono text-mono-sm text-neutral-400 dark:text-neutral-600"
+                                    className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600"
                                     aria-hidden="true"
                                   >
                                     ·
@@ -997,7 +1016,7 @@ const answer = await engine.query(prompt);`}</code>
                             <button
                               type="button"
                               onClick={() => toggleProjectExpansion(project.id)}
-                              className="font-label text-label-md text-neutral-900 dark:text-neutral-100 hover:underline flex items-center gap-1 cursor-pointer"
+                              className="font-label text-xs sm:text-label-md text-neutral-900 dark:text-neutral-100 hover:underline flex items-center gap-1 cursor-pointer py-1.5 min-h-[44px]"
                             >
                               <span>{isExpanded ? "Hide Architecture" : "View Architecture"}</span>
                               <span className="material-symbols-outlined text-body-md" aria-hidden="true">
@@ -1009,7 +1028,7 @@ const answer = await engine.query(prompt);`}</code>
                               href={project.repoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="font-label text-label-md text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white flex items-center gap-1"
+                              className="font-label text-xs sm:text-label-md text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white flex items-center gap-1 py-1.5 min-h-[44px]"
                             >
                               <span>Source Code</span>
                               <span className="material-symbols-outlined text-body-sm" aria-hidden="true">
@@ -1029,15 +1048,15 @@ const answer = await engine.query(prompt);`}</code>
         {/* Experience: 2-Column Sticky Header + Scroll Timeline */}
         <section
           id="experience"
-          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-section"
+          className="max-w-6xl mx-auto px-gutter-md md:px-page-margin pb-12 sm:pb-16 md:pb-section"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter-xl items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-gutter-xl items-start">
             {/* Left Column Overview */}
             <div className="lg:col-span-4 flex flex-col gap-gutter-sm lg:sticky lg:top-28">
               <h2 className="font-headline text-headline-lg-mobile lg:text-headline-lg text-neutral-900 dark:text-neutral-100">
                 Experience
               </h2>
-              <span className="font-mono text-mono-sm text-neutral-500 dark:text-neutral-400 tabular-nums">
+              <span className="font-mono text-xs sm:text-mono-sm text-neutral-500 dark:text-neutral-400 tabular-nums">
                 3 INTERNSHIPS &amp; APPLIED ROLES
               </span>
 
@@ -1045,43 +1064,43 @@ const answer = await engine.query(prompt);`}</code>
               <motion.div
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
-                className="mt-4 p-gutter-md rounded-md bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col gap-1.5 shadow-sm"
+                className="mt-4 p-5 sm:p-gutter-md rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col gap-1.5 shadow-sm"
               >
-                <span className="font-label text-label-md uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
+                <span className="font-label text-xs sm:text-label-md uppercase tracking-wider text-neutral-900 dark:text-neutral-100 font-semibold">
                   Education &amp; Academic Honors
                 </span>
-                <p className="font-headline text-body-md font-medium text-neutral-900 dark:text-neutral-100">
+                <p className="font-headline text-sm sm:text-body-md font-medium text-neutral-900 dark:text-neutral-100">
                   HKBK College of Engineering, Bengaluru
                 </p>
-                <p className="font-body text-body-sm text-neutral-700 dark:text-neutral-300">
+                <p className="font-body text-xs sm:text-body-sm text-neutral-700 dark:text-neutral-300">
                   B.Tech in Artificial Intelligence &amp; Machine Learning
                 </p>
                 <div className="inline-flex items-center gap-2 pt-1">
-                  <span className="font-mono text-mono-sm px-2.5 py-0.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold">
+                  <span className="font-mono text-xs px-2.5 py-0.5 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-semibold">
                     7.3 CGPA
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs text-neutral-600 dark:text-neutral-400">
                     2022 — 2026
                   </span>
                 </div>
               </motion.div>
             </div>
 
-            {/* Right Column Progressive Timeline with Viewport Scroll Triggers */}
+            {/* Right Column Progressive Timeline with Viewport Scroll Triggers & Guaranteed Alignment */}
             <div
               id="experience-timeline"
-              className="lg:col-span-8 relative pl-gutter-xl md:pl-12 flex flex-col gap-gutter-xl"
+              className="lg:col-span-8 relative pl-8 sm:pl-10 md:pl-12 flex flex-col gap-8 sm:gap-gutter-xl"
             >
               {/* Background Guide Line */}
               <div
-                className="absolute top-2 bottom-2 left-1.5 w-px bg-neutral-200 dark:border-neutral-800"
+                className="absolute top-2 bottom-2 left-2.5 w-[2px] bg-neutral-200 dark:bg-neutral-800"
                 aria-hidden="true"
               ></div>
 
               {/* Dynamic Scroll Progress Line */}
               <div
                 id="experience-progress-line"
-                className="absolute top-2 bottom-2 left-1.5 w-px bg-neutral-900 dark:bg-white origin-top transition-transform duration-150 ease-out"
+                className="absolute top-2 bottom-2 left-2.5 w-[2px] bg-neutral-900 dark:bg-white origin-top transition-transform duration-150 ease-out"
                 style={{ transform: `scaleY(${timelineProgress})` }}
                 aria-hidden="true"
               ></div>
@@ -1095,7 +1114,7 @@ const answer = await engine.query(prompt);`}</code>
                 className="experience-item relative flex flex-col gap-gutter-sm"
               >
                 <span
-                  className={`experience-dot absolute -left-gutter-xl md:-left-12 top-1.5 w-3 h-3 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
                     timelineProgress >= 0.1
                       ? "bg-neutral-900 dark:bg-white"
                       : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
@@ -1103,27 +1122,27 @@ const answer = await engine.query(prompt);`}</code>
                   aria-hidden="true"
                 ></span>
                 <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100">
+                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
                     AI Engineering Intern
                   </h3>
-                  <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
                     2025 — PRESENT
                   </span>
                 </div>
-                <p className="font-label text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
                   Generative AI &amp; RAG Systems
                 </p>
-                <p className="font-body text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
                   Architected client-side document chunking and retrieval workflows, cutting inference latency and eliminating external vector DB hosting overhead.
                 </p>
                 <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     RAG
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-400 dark:text-neutral-600">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
                     ·
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     TypeScript
                   </span>
                 </div>
@@ -1138,7 +1157,7 @@ const answer = await engine.query(prompt);`}</code>
                 className="experience-item relative flex flex-col gap-gutter-sm"
               >
                 <span
-                  className={`experience-dot absolute -left-gutter-xl md:-left-12 top-1.5 w-3 h-3 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
                     timelineProgress >= 0.45
                       ? "bg-neutral-900 dark:bg-white"
                       : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
@@ -1146,27 +1165,27 @@ const answer = await engine.query(prompt);`}</code>
                   aria-hidden="true"
                 ></span>
                 <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100">
+                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
                     Full-Stack Web Intern
                   </h3>
-                  <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
                     2024 — 2025
                   </span>
                 </div>
-                <p className="font-label text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
                   Web Platforms &amp; APIs
                 </p>
-                <p className="font-body text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
                   Shipped responsive React dashboards and RESTful Node.js microservices with automated schema validation and role-based access control.
                 </p>
                 <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     React
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-400 dark:text-neutral-600">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
                     ·
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     Node.js
                   </span>
                 </div>
@@ -1181,7 +1200,7 @@ const answer = await engine.query(prompt);`}</code>
                 className="experience-item relative flex flex-col gap-gutter-sm"
               >
                 <span
-                  className={`experience-dot absolute -left-gutter-xl md:-left-12 top-1.5 w-3 h-3 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
+                  className={`experience-dot absolute left-2.5 -translate-x-1/2 top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-neutral-50 dark:ring-[#0A0A0A] transition-colors duration-state-change ${
                     timelineProgress >= 0.8
                       ? "bg-neutral-900 dark:bg-white"
                       : "bg-neutral-300 dark:bg-neutral-700 border border-neutral-900 dark:border-white"
@@ -1189,27 +1208,27 @@ const answer = await engine.query(prompt);`}</code>
                   aria-hidden="true"
                 ></span>
                 <div className="flex flex-wrap items-baseline justify-between gap-gutter-sm">
-                  <h3 className="font-headline text-title-lg text-neutral-900 dark:text-neutral-100">
+                  <h3 className="font-headline text-lg sm:text-title-lg text-neutral-900 dark:text-neutral-100">
                     ML Research Intern
                   </h3>
-                  <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 tabular-nums font-semibold">
                     2024
                   </span>
                 </div>
-                <p className="font-label text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
+                <p className="font-label text-sm sm:text-label-lg text-neutral-800 dark:text-neutral-200 font-medium">
                   Telemetry &amp; Forecasting
                 </p>
-                <p className="font-body text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
+                <p className="font-body text-sm sm:text-body-md text-neutral-700 dark:text-neutral-300 max-w-prose text-pretty leading-relaxed">
                   Trained and evaluated telemetry prediction models on multivariate sensor streams, improving early anomaly recall by 18%.
                 </p>
                 <div className="flex flex-wrap gap-gutter-xs pt-gutter-xs">
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     Python
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-400 dark:text-neutral-600">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-400 dark:text-neutral-600">
                     ·
                   </span>
-                  <span className="font-mono text-mono-sm text-neutral-600 dark:text-neutral-400">
+                  <span className="font-mono text-xs sm:text-mono-sm text-neutral-600 dark:text-neutral-400">
                     Google Cloud ML
                   </span>
                 </div>
@@ -1221,9 +1240,9 @@ const answer = await engine.query(prompt);`}</code>
         {/* Dedicated Clean Editorial Contact Section */}
         <section
           id="contact"
-          className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/40 py-section"
+          className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/40 py-12 sm:py-16 md:py-section"
         >
-          <div className="max-w-6xl mx-auto px-gutter-md md:px-page-margin flex flex-col gap-gutter-xl">
+          <div className="max-w-6xl mx-auto px-gutter-md md:px-page-margin flex flex-col gap-8 sm:gap-gutter-xl">
             {/* Contact Header */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -1233,7 +1252,7 @@ const answer = await engine.query(prompt);`}</code>
               className="flex flex-col md:flex-row md:items-end justify-between gap-gutter-md"
             >
               <div className="flex flex-col gap-gutter-sm max-w-2xl">
-                <span className="font-mono text-mono-sm text-neutral-900 dark:text-neutral-100 uppercase tracking-wider font-semibold">
+                <span className="font-mono text-xs sm:text-mono-sm text-neutral-900 dark:text-neutral-100 uppercase tracking-wider font-semibold">
                   Get In Touch · Let’s Collaborate
                 </span>
                 <h2 className="font-headline text-headline-lg-mobile lg:text-headline-lg text-neutral-900 dark:text-neutral-100">
@@ -1243,7 +1262,7 @@ const answer = await engine.query(prompt);`}</code>
                   </em>
                   .
                 </h2>
-                <p className="font-body text-body-lg text-neutral-700 dark:text-neutral-300">
+                <p className="font-body text-base sm:text-body-lg text-neutral-700 dark:text-neutral-300">
                   Open to AI engineering roles, full-stack web platforms, and open-source collaborations. Reach out directly below.
                 </p>
               </div>
@@ -1253,7 +1272,7 @@ const answer = await engine.query(prompt);`}</code>
                   href="#home"
                   whileHover={{ y: -2, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="inline-flex items-center gap-gutter-sm px-5 py-2.5 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-label-lg transition-colors duration-state-change cursor-pointer"
+                  className="inline-flex items-center gap-gutter-sm px-5 py-2.5 rounded-full bg-neutral-200/80 hover:bg-neutral-300/80 text-neutral-900 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-sm sm:text-label-lg transition-colors duration-state-change cursor-pointer min-h-[44px]"
                 >
                   <span>Back to Top</span>
                   <span className="material-symbols-outlined text-title-md" aria-hidden="true">
@@ -1272,21 +1291,21 @@ const answer = await engine.query(prompt);`}</code>
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: 0.05 }}
                 whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                className="lg:col-span-7 p-6 sm:p-8 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-6 shadow-sm"
+                className="lg:col-span-7 p-5 sm:p-7 md:p-8 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-6 shadow-sm"
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
                       Primary Channel
                     </span>
-                    <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-mono-sm font-mono font-medium flex items-center gap-1.5">
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 text-xs font-mono font-medium flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                       <span>Available · Response &lt; 24h</span>
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="font-headline text-2xl sm:text-3xl text-neutral-900 dark:text-neutral-100 font-medium">
+                    <h3 className="font-headline text-xl sm:text-2xl md:text-3xl text-neutral-900 dark:text-neutral-100 font-medium">
                       Start a Conversation
                     </h3>
                     <p className="font-body text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed mt-2">
@@ -1295,7 +1314,7 @@ const answer = await engine.query(prompt);`}</code>
                   </div>
 
                   {/* Interactive Email Showcase Box */}
-                  <div className="mt-2 p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="mt-2 p-4 sm:p-5 rounded-xl bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="w-10 h-10 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 flex items-center justify-center shrink-0">
                         <span className="material-symbols-outlined text-neutral-900 dark:text-neutral-100 text-title-md" aria-hidden="true">
@@ -1306,18 +1325,18 @@ const answer = await engine.query(prompt);`}</code>
                         <p className="font-mono text-xs text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
                           Direct Email
                         </p>
-                        <p className="font-mono text-sm sm:text-base font-semibold text-neutral-950 dark:text-white break-all">
+                        <p className="font-mono text-xs sm:text-sm md:text-base font-semibold text-neutral-950 dark:text-white break-all">
                           mohammedrehanz517@gmail.com
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
                       <motion.button
                         type="button"
                         onClick={() => handleCopy("mohammedrehanz517@gmail.com", "primary email")}
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.96 }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-sm font-semibold transition-colors cursor-pointer shadow-sm"
+                        className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-sm font-semibold transition-colors cursor-pointer shadow-sm min-h-[44px]"
                       >
                         <span className="material-symbols-outlined text-body-md" aria-hidden="true">
                           content_copy
@@ -1328,7 +1347,7 @@ const answer = await engine.query(prompt);`}</code>
                         href="mailto:mohammedrehanz517@gmail.com"
                         whileHover={{ scale: 1.04 }}
                         whileTap={{ scale: 0.96 }}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white hover:bg-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-sm font-medium transition-colors cursor-pointer"
+                        className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-full bg-white hover:bg-neutral-50 dark:bg-neutral-900 dark:hover:bg-neutral-800 text-neutral-900 dark:text-white border border-neutral-300 dark:border-neutral-700 font-label text-sm font-medium transition-colors cursor-pointer min-h-[44px]"
                       >
                         <span className="material-symbols-outlined text-body-md" aria-hidden="true">
                           send
@@ -1354,7 +1373,7 @@ const answer = await engine.query(prompt);`}</code>
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: 0.12 }}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className="p-6 sm:p-7 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col gap-4 shadow-sm"
+                  className="p-5 sm:p-6 md:p-7 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col gap-4 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
@@ -1370,7 +1389,7 @@ const answer = await engine.query(prompt);`}</code>
                       href="https://github.com/mohammed-rehan-z"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-lg bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between transition-colors group"
+                      className="p-3 sm:p-3.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between transition-colors group min-h-[48px]"
                     >
                       <div className="flex items-center gap-3">
                         <span className="material-symbols-outlined text-title-md text-neutral-900 dark:text-neutral-100" aria-hidden="true">
@@ -1394,7 +1413,7 @@ const answer = await engine.query(prompt);`}</code>
                       href="https://linkedin.com/in/mohammed-rehan-z"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 rounded-lg bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between transition-colors group"
+                      className="p-3 sm:p-3.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 flex items-center justify-between transition-colors group min-h-[48px]"
                     >
                       <div className="flex items-center gap-3">
                         <span className="material-symbols-outlined text-title-md text-neutral-900 dark:text-neutral-100" aria-hidden="true">
@@ -1423,7 +1442,7 @@ const answer = await engine.query(prompt);`}</code>
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.5, delay: 0.18 }}
                   whileHover={{ y: -3, transition: { duration: 0.2 } }}
-                  className="p-6 sm:p-7 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-4 shadow-sm"
+                  className="p-5 sm:p-6 md:p-7 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between gap-4 shadow-sm"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
@@ -1436,7 +1455,7 @@ const answer = await engine.query(prompt);`}</code>
                   </div>
 
                   <div>
-                    <h4 className="font-headline text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                    <h4 className="font-headline text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                       Bengaluru, Karnataka, India
                     </h4>
                     <p className="font-body text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-1">
@@ -1450,7 +1469,7 @@ const answer = await engine.query(prompt);`}</code>
                       onClick={handleDownloadResume}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-sm font-semibold transition-colors cursor-pointer shadow-sm"
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-neutral-900 hover:bg-neutral-800 text-white dark:bg-white dark:hover:bg-neutral-200 dark:text-neutral-950 font-label text-sm font-semibold transition-colors cursor-pointer shadow-sm min-h-[48px]"
                     >
                       <span className="material-symbols-outlined text-body-md" aria-hidden="true">
                         download
@@ -1467,14 +1486,14 @@ const answer = await engine.query(prompt);`}</code>
 
       {/* Minimal Sub-footer */}
       <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-[#0A0A0A] py-6">
-        <div className="max-w-6xl mx-auto px-gutter-md md:px-page-margin flex flex-col sm:flex-row items-center justify-between gap-4 text-mono-sm font-mono text-neutral-600 dark:text-neutral-400">
+        <div className="max-w-6xl mx-auto px-gutter-md md:px-page-margin flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-mono-sm font-mono text-neutral-600 dark:text-neutral-400 text-center sm:text-left">
           <p>© 2026 Mohammed Rehan.Z</p>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/mohammed-rehan-z"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-neutral-950 dark:hover:text-white transition-colors"
+              className="hover:text-neutral-950 dark:hover:text-white transition-colors py-1"
             >
               GitHub
             </a>
@@ -1483,7 +1502,7 @@ const answer = await engine.query(prompt);`}</code>
               href="https://linkedin.com/in/mohammed-rehan-z"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-neutral-950 dark:hover:text-white transition-colors"
+              className="hover:text-neutral-950 dark:hover:text-white transition-colors py-1"
             >
               LinkedIn
             </a>
@@ -1491,7 +1510,7 @@ const answer = await engine.query(prompt);`}</code>
             <button
               type="button"
               onClick={handleDownloadResume}
-              className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer"
+              className="hover:text-neutral-950 dark:hover:text-white transition-colors cursor-pointer py-1"
             >
               Resume PDF
             </button>
@@ -1509,7 +1528,7 @@ const answer = await engine.query(prompt);`}</code>
             transition={{ type: "spring", stiffness: 420, damping: 28 }}
             role="status"
             aria-live="polite"
-            className="fixed bottom-gutter-lg right-gutter-lg z-50 px-5 py-3 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-label text-label-lg border border-neutral-700 dark:border-neutral-300 shadow-2xl"
+            className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 z-50 px-5 py-3 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-label text-sm sm:text-label-lg border border-neutral-700 dark:border-neutral-300 shadow-2xl text-center sm:text-left"
           >
             <span>{toastMessage}</span>
           </motion.div>
